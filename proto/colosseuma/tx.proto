@@ -9,6 +9,7 @@ option go_package = "ColosseumA/x/colosseuma/types";
 service Msg {
       rpc CreateCoinSymbol(MsgCreateCoinSymbol) returns (MsgCreateCoinSymbolResponse);
   rpc DeleteCoinSymbol(MsgDeleteCoinSymbol) returns (MsgDeleteCoinSymbolResponse);
+  rpc UpdateCoinSymbol(MsgUpdateCoinSymbol) returns (MsgUpdateCoinSymbolResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -26,6 +27,15 @@ message MsgDeleteCoinSymbol {
 }
 
 message MsgDeleteCoinSymbolResponse {
+}
+
+message MsgUpdateCoinSymbol {
+  string creator = 1;
+  uint64 id = 2;
+  string symbol = 3;
+}
+
+message MsgUpdateCoinSymbolResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

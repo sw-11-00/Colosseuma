@@ -19,6 +19,8 @@ export type ColosseumaMsgCreateCoinSymbolResponse = object;
 
 export type ColosseumaMsgDeleteCoinSymbolResponse = object;
 
+export type ColosseumaMsgUpdateCoinSymbolResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */

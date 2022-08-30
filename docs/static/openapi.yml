@@ -116,6 +116,16 @@ paths:
           in: query
           required: false
           type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
       tags:
         - Query
   '/ColosseumA/colosseuma/coin_symbol/{id}':
@@ -30578,6 +30588,8 @@ definitions:
   colosseuma.colosseuma.MsgCreateCoinSymbolResponse:
     type: object
   colosseuma.colosseuma.MsgDeleteCoinSymbolResponse:
+    type: object
+  colosseuma.colosseuma.MsgUpdateCoinSymbolResponse:
     type: object
   colosseuma.colosseuma.Params:
     type: object
