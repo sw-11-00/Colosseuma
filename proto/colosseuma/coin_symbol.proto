@@ -1,0 +1,10 @@
+syntax = "proto3";
+package colosseuma.colosseuma;
+
+option go_package = "ColosseumA/x/colosseuma/types";
+
+message CoinSymbol {
+  uint64 id = 1;
+  string symbol = 2; 
+  
+}

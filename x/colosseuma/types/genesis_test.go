@@ -19,12 +19,47 @@ func TestGenesisState_Validate(t *testing.T) {
 			valid:    true,
 		},
 		{
-			desc:     "valid genesis state",
+			desc: "valid genesis state",
 			genState: &types.GenesisState{
 
+				CoinSymbolList: []types.CoinSymbol{
+					{
+						Id: 0,
+					},
+					{
+						Id: 1,
+					},
+				},
+				CoinSymbolCount: 2,
 				// this line is used by starport scaffolding # types/genesis/validField
 			},
 			valid: true,
+		},
+		{
+			desc: "duplicated coinSymbol",
+			genState: &types.GenesisState{
+				CoinSymbolList: []types.CoinSymbol{
+					{
+						Id: 0,
+					},
+					{
+						Id: 0,
+					},
+				},
+			},
+			valid: false,
+		},
+		{
+			desc: "invalid coinSymbol count",
+			genState: &types.GenesisState{
+				CoinSymbolList: []types.CoinSymbol{
+					{
+						Id: 1,
+					},
+				},
+				CoinSymbolCount: 0,
+			},
+			valid: false,
 		},
 		// this line is used by starport scaffolding # types/genesis/testcase
 	} {

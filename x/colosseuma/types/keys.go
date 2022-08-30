@@ -20,3 +20,8 @@ const (
 func KeyPrefix(p string) []byte {
 	return []byte(p)
 }
+
+const (
+	CoinSymbolKey      = "CoinSymbol-value-"
+	CoinSymbolCountKey = "CoinSymbol-count-"
+)

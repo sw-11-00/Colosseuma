@@ -3,6 +3,7 @@ package colosseuma.colosseuma;
 
 import "gogoproto/gogo.proto";
 import "colosseuma/params.proto";
+import "colosseuma/coin_symbol.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "ColosseumA/x/colosseuma/types";
@@ -10,5 +11,7 @@ option go_package = "ColosseumA/x/colosseuma/types";
 // GenesisState defines the colosseuma module's genesis state.
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
+  repeated CoinSymbol coinSymbolList = 2 [(gogoproto.nullable) = false];
+  uint64 coinSymbolCount = 3;
   // this line is used by starport scaffolding # genesis/proto/state
 }

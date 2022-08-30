@@ -6,7 +6,7 @@ package types
 import (
 	context "context"
 	fmt "fmt"
-	_ "github.com/cosmos/cosmos-sdk/types/query"
+	query "github.com/cosmos/cosmos-sdk/types/query"
 	_ "github.com/gogo/protobuf/gogoproto"
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
@@ -113,33 +113,234 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
+type QueryGetCoinSymbolRequest struct {
+	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (m *QueryGetCoinSymbolRequest) Reset()         { *m = QueryGetCoinSymbolRequest{} }
+func (m *QueryGetCoinSymbolRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetCoinSymbolRequest) ProtoMessage()    {}
+func (*QueryGetCoinSymbolRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f7dad3c38e43f6de, []int{2}
+}
+func (m *QueryGetCoinSymbolRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetCoinSymbolRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetCoinSymbolRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetCoinSymbolRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetCoinSymbolRequest.Merge(m, src)
+}
+func (m *QueryGetCoinSymbolRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetCoinSymbolRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetCoinSymbolRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetCoinSymbolRequest proto.InternalMessageInfo
+
+func (m *QueryGetCoinSymbolRequest) GetId() uint64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type QueryGetCoinSymbolResponse struct {
+	CoinSymbol CoinSymbol `protobuf:"bytes,1,opt,name=CoinSymbol,proto3" json:"CoinSymbol"`
+}
+
+func (m *QueryGetCoinSymbolResponse) Reset()         { *m = QueryGetCoinSymbolResponse{} }
+func (m *QueryGetCoinSymbolResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetCoinSymbolResponse) ProtoMessage()    {}
+func (*QueryGetCoinSymbolResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f7dad3c38e43f6de, []int{3}
+}
+func (m *QueryGetCoinSymbolResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetCoinSymbolResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetCoinSymbolResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetCoinSymbolResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetCoinSymbolResponse.Merge(m, src)
+}
+func (m *QueryGetCoinSymbolResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetCoinSymbolResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetCoinSymbolResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetCoinSymbolResponse proto.InternalMessageInfo
+
+func (m *QueryGetCoinSymbolResponse) GetCoinSymbol() CoinSymbol {
+	if m != nil {
+		return m.CoinSymbol
+	}
+	return CoinSymbol{}
+}
+
+type QueryAllCoinSymbolRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllCoinSymbolRequest) Reset()         { *m = QueryAllCoinSymbolRequest{} }
+func (m *QueryAllCoinSymbolRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllCoinSymbolRequest) ProtoMessage()    {}
+func (*QueryAllCoinSymbolRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f7dad3c38e43f6de, []int{4}
+}
+func (m *QueryAllCoinSymbolRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllCoinSymbolRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllCoinSymbolRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllCoinSymbolRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllCoinSymbolRequest.Merge(m, src)
+}
+func (m *QueryAllCoinSymbolRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllCoinSymbolRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllCoinSymbolRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllCoinSymbolRequest proto.InternalMessageInfo
+
+func (m *QueryAllCoinSymbolRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllCoinSymbolResponse struct {
+	CoinSymbol []CoinSymbol        `protobuf:"bytes,1,rep,name=CoinSymbol,proto3" json:"CoinSymbol"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllCoinSymbolResponse) Reset()         { *m = QueryAllCoinSymbolResponse{} }
+func (m *QueryAllCoinSymbolResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllCoinSymbolResponse) ProtoMessage()    {}
+func (*QueryAllCoinSymbolResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_f7dad3c38e43f6de, []int{5}
+}
+func (m *QueryAllCoinSymbolResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllCoinSymbolResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllCoinSymbolResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllCoinSymbolResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllCoinSymbolResponse.Merge(m, src)
+}
+func (m *QueryAllCoinSymbolResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllCoinSymbolResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllCoinSymbolResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllCoinSymbolResponse proto.InternalMessageInfo
+
+func (m *QueryAllCoinSymbolResponse) GetCoinSymbol() []CoinSymbol {
+	if m != nil {
+		return m.CoinSymbol
+	}
+	return nil
+}
+
+func (m *QueryAllCoinSymbolResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "colosseuma.colosseuma.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "colosseuma.colosseuma.QueryParamsResponse")
+	proto.RegisterType((*QueryGetCoinSymbolRequest)(nil), "colosseuma.colosseuma.QueryGetCoinSymbolRequest")
+	proto.RegisterType((*QueryGetCoinSymbolResponse)(nil), "colosseuma.colosseuma.QueryGetCoinSymbolResponse")
+	proto.RegisterType((*QueryAllCoinSymbolRequest)(nil), "colosseuma.colosseuma.QueryAllCoinSymbolRequest")
+	proto.RegisterType((*QueryAllCoinSymbolResponse)(nil), "colosseuma.colosseuma.QueryAllCoinSymbolResponse")
 }
 
 func init() { proto.RegisterFile("colosseuma/query.proto", fileDescriptor_f7dad3c38e43f6de) }
 
 var fileDescriptor_f7dad3c38e43f6de = []byte{
-	// 286 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4b, 0xce, 0xcf, 0xc9,
-	0x2f, 0x2e, 0x4e, 0x2d, 0xcd, 0x4d, 0xd4, 0x2f, 0x2c, 0x4d, 0x2d, 0xaa, 0xd4, 0x2b, 0x28, 0xca,
-	0x2f, 0xc9, 0x17, 0x12, 0x45, 0x88, 0xeb, 0x21, 0x98, 0x52, 0x22, 0xe9, 0xf9, 0xe9, 0xf9, 0x60,
-	0x15, 0xfa, 0x20, 0x16, 0x44, 0xb1, 0x94, 0x4c, 0x7a, 0x7e, 0x7e, 0x7a, 0x4e, 0xaa, 0x7e, 0x62,
-	0x41, 0xa6, 0x7e, 0x62, 0x5e, 0x5e, 0x7e, 0x49, 0x62, 0x49, 0x66, 0x7e, 0x5e, 0x31, 0x54, 0x56,
-	0x2b, 0x39, 0xbf, 0x38, 0x37, 0xbf, 0x58, 0x3f, 0x29, 0xb1, 0x38, 0x15, 0x62, 0x87, 0x7e, 0x99,
-	0x61, 0x52, 0x6a, 0x49, 0xa2, 0xa1, 0x7e, 0x41, 0x62, 0x7a, 0x66, 0x1e, 0x58, 0x31, 0x54, 0xad,
-	0x38, 0x92, 0x73, 0x0a, 0x12, 0x8b, 0x12, 0x73, 0xa1, 0x86, 0x28, 0x89, 0x70, 0x09, 0x05, 0x82,
-	0xb4, 0x06, 0x80, 0x05, 0x83, 0x52, 0x0b, 0x4b, 0x53, 0x8b, 0x4b, 0x94, 0x82, 0xb8, 0x84, 0x51,
-	0x44, 0x8b, 0x0b, 0xf2, 0xf3, 0x8a, 0x53, 0x85, 0xac, 0xb9, 0xd8, 0x20, 0x9a, 0x25, 0x18, 0x15,
-	0x18, 0x35, 0xb8, 0x8d, 0x64, 0xf5, 0xb0, 0xfa, 0x46, 0x0f, 0xa2, 0xcd, 0x89, 0xe5, 0xc4, 0x3d,
-	0x79, 0x86, 0x20, 0xa8, 0x16, 0xa3, 0x09, 0x8c, 0x5c, 0xac, 0x60, 0x43, 0x85, 0xda, 0x18, 0xb9,
-	0xd8, 0x20, 0x4a, 0x84, 0x34, 0x71, 0x98, 0x80, 0xe9, 0x26, 0x29, 0x2d, 0x62, 0x94, 0x42, 0x1c,
-	0xaa, 0xa4, 0xda, 0x74, 0xf9, 0xc9, 0x64, 0x26, 0x79, 0x21, 0x59, 0x7d, 0x67, 0x98, 0x42, 0x47,
-	0x7d, 0x8c, 0x20, 0x70, 0x32, 0x3f, 0xf1, 0x48, 0x8e, 0xf1, 0xc2, 0x23, 0x39, 0xc6, 0x07, 0x8f,
-	0xe4, 0x18, 0x27, 0x3c, 0x96, 0x63, 0xb8, 0xf0, 0x58, 0x8e, 0xe1, 0xc6, 0x63, 0x39, 0x86, 0x28,
-	0x59, 0x24, 0x7d, 0x15, 0xc8, 0x3a, 0x4b, 0x2a, 0x0b, 0x52, 0x8b, 0x93, 0xd8, 0xc0, 0x81, 0x67,
-	0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0xe9, 0xbf, 0xaa, 0xce, 0xe6, 0x01, 0x00, 0x00,
+	// 486 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x3f, 0x6f, 0x13, 0x31,
+	0x18, 0xc6, 0xe3, 0xb4, 0x64, 0x30, 0x82, 0xc1, 0x94, 0x7f, 0xa7, 0xe6, 0x0a, 0x16, 0x50, 0x1a,
+	0x24, 0x9b, 0x94, 0x81, 0x81, 0x29, 0xad, 0x44, 0xd7, 0x72, 0x6c, 0x2c, 0xc8, 0x49, 0xac, 0x93,
+	0xa5, 0xbb, 0x7b, 0xaf, 0xf1, 0x05, 0x11, 0x21, 0x16, 0x06, 0x66, 0x24, 0xbe, 0x00, 0xe2, 0x03,
+	0xf0, 0x39, 0x3a, 0x56, 0x62, 0xe9, 0x84, 0x50, 0xc2, 0x07, 0x41, 0x67, 0xbb, 0x3a, 0x43, 0xee,
+	0x1a, 0xe8, 0x76, 0xb2, 0x9f, 0xe7, 0x79, 0x7f, 0xaf, 0xdf, 0x37, 0xc1, 0x37, 0x46, 0x90, 0x80,
+	0xd6, 0x72, 0x9a, 0x0a, 0x7e, 0x34, 0x95, 0x93, 0x19, 0xcb, 0x27, 0x50, 0x00, 0xb9, 0x5e, 0x9d,
+	0xb3, 0xea, 0x33, 0xd8, 0x88, 0x21, 0x06, 0xa3, 0xe0, 0xe5, 0x97, 0x15, 0x07, 0x9b, 0x31, 0x40,
+	0x9c, 0x48, 0x2e, 0x72, 0xc5, 0x45, 0x96, 0x41, 0x21, 0x0a, 0x05, 0x99, 0x76, 0xb7, 0xbd, 0x11,
+	0xe8, 0x14, 0x34, 0x1f, 0x0a, 0x2d, 0x6d, 0x0d, 0xfe, 0xa6, 0x3f, 0x94, 0x85, 0xe8, 0xf3, 0x5c,
+	0xc4, 0x2a, 0x33, 0x62, 0xa7, 0xbd, 0xe9, 0xe1, 0xe4, 0x62, 0x22, 0xd2, 0xb3, 0x90, 0x4d, 0xef,
+	0x62, 0x04, 0x2a, 0x7b, 0xad, 0x67, 0xe9, 0x10, 0x12, 0x7b, 0x4b, 0x37, 0x30, 0x79, 0x51, 0x06,
+	0x1f, 0x1a, 0x4b, 0x24, 0x8f, 0xa6, 0x52, 0x17, 0x34, 0xc2, 0xd7, 0xfe, 0x38, 0xd5, 0x39, 0x64,
+	0x5a, 0x92, 0x67, 0xb8, 0x63, 0xa3, 0x6f, 0xa1, 0x3b, 0xe8, 0xe1, 0xe5, 0xdd, 0x2e, 0xab, 0xed,
+	0x95, 0x59, 0xdb, 0xde, 0xfa, 0xf1, 0x8f, 0xad, 0x56, 0xe4, 0x2c, 0xf4, 0x11, 0xbe, 0x6d, 0x32,
+	0x0f, 0x64, 0xb1, 0x0f, 0x2a, 0x7b, 0x69, 0x28, 0x5c, 0x41, 0x72, 0x15, 0xb7, 0xd5, 0xd8, 0xa4,
+	0xae, 0x47, 0x6d, 0x35, 0xa6, 0x12, 0x07, 0x75, 0x62, 0xc7, 0x71, 0x80, 0x71, 0x75, 0xea, 0x58,
+	0xee, 0x36, 0xb0, 0x54, 0x42, 0xc7, 0xe3, 0x59, 0xe9, 0xc8, 0x31, 0x0d, 0x92, 0x64, 0x99, 0xe9,
+	0x39, 0xc6, 0xd5, 0x2b, 0xbb, 0x2a, 0x0f, 0x98, 0x1d, 0x09, 0x2b, 0x47, 0xc2, 0xec, 0xd8, 0xdd,
+	0x48, 0xd8, 0xa1, 0x88, 0xa5, 0xf3, 0x46, 0x9e, 0x93, 0x7e, 0x43, 0xae, 0x99, 0xbf, 0xaa, 0x34,
+	0x34, 0xb3, 0x76, 0xc1, 0x66, 0xca, 0x20, 0x8f, 0xb7, 0x6d, 0x78, 0xb7, 0x57, 0xf2, 0x5a, 0x0a,
+	0x1f, 0x78, 0xf7, 0x74, 0x0d, 0x5f, 0x32, 0xc0, 0xe4, 0x23, 0xc2, 0x1d, 0x3b, 0x4c, 0xb2, 0xd3,
+	0x80, 0xb4, 0xbc, 0x3d, 0x41, 0xef, 0x5f, 0xa4, 0xb6, 0x2e, 0xbd, 0xff, 0xe1, 0xfb, 0xaf, 0xcf,
+	0xed, 0x2d, 0xd2, 0xe5, 0xfb, 0x67, 0xc2, 0x01, 0x5f, 0x5a, 0x65, 0xf2, 0x15, 0xf9, 0xaf, 0x44,
+	0x1e, 0x9f, 0x57, 0xa1, 0x6e, 0xc1, 0x82, 0xfe, 0x7f, 0x38, 0x1c, 0x1a, 0x37, 0x68, 0x3b, 0x64,
+	0xbb, 0x01, 0xcd, 0xfb, 0x31, 0xf1, 0x77, 0x6a, 0xfc, 0x9e, 0x7c, 0x41, 0xf8, 0x4a, 0x95, 0x33,
+	0x48, 0x56, 0x70, 0xd6, 0x2d, 0xdd, 0xf9, 0x9c, 0xb5, 0x0b, 0x44, 0x7b, 0x86, 0xf3, 0x1e, 0xa1,
+	0xab, 0x39, 0xf7, 0x9e, 0x1e, 0xcf, 0x43, 0x74, 0x32, 0x0f, 0xd1, 0xcf, 0x79, 0x88, 0x3e, 0x2d,
+	0xc2, 0xd6, 0xc9, 0x22, 0x6c, 0x9d, 0x2e, 0xc2, 0xd6, 0xab, 0xae, 0x67, 0x7e, 0xeb, 0xdb, 0x8b,
+	0x59, 0x2e, 0xf5, 0xb0, 0x63, 0xfe, 0x2e, 0x9e, 0xfc, 0x0e, 0x00, 0x00, 0xff, 0xff, 0xa8, 0x79,
+	0x33, 0x2b, 0xf6, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -156,6 +357,10 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// Queries a CoinSymbol by id.
+	CoinSymbol(ctx context.Context, in *QueryGetCoinSymbolRequest, opts ...grpc.CallOption) (*QueryGetCoinSymbolResponse, error)
+	// Queries a list of CoinSymbol items.
+	CoinSymbolAll(ctx context.Context, in *QueryAllCoinSymbolRequest, opts ...grpc.CallOption) (*QueryAllCoinSymbolResponse, error)
 }
 
 type queryClient struct {
@@ -175,10 +380,32 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) CoinSymbol(ctx context.Context, in *QueryGetCoinSymbolRequest, opts ...grpc.CallOption) (*QueryGetCoinSymbolResponse, error) {
+	out := new(QueryGetCoinSymbolResponse)
+	err := c.cc.Invoke(ctx, "/colosseuma.colosseuma.Query/CoinSymbol", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) CoinSymbolAll(ctx context.Context, in *QueryAllCoinSymbolRequest, opts ...grpc.CallOption) (*QueryAllCoinSymbolResponse, error) {
+	out := new(QueryAllCoinSymbolResponse)
+	err := c.cc.Invoke(ctx, "/colosseuma.colosseuma.Query/CoinSymbolAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// Queries a CoinSymbol by id.
+	CoinSymbol(context.Context, *QueryGetCoinSymbolRequest) (*QueryGetCoinSymbolResponse, error)
+	// Queries a list of CoinSymbol items.
+	CoinSymbolAll(context.Context, *QueryAllCoinSymbolRequest) (*QueryAllCoinSymbolResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -187,6 +414,12 @@ type UnimplementedQueryServer struct {
 
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (*UnimplementedQueryServer) CoinSymbol(ctx context.Context, req *QueryGetCoinSymbolRequest) (*QueryGetCoinSymbolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CoinSymbol not implemented")
+}
+func (*UnimplementedQueryServer) CoinSymbolAll(ctx context.Context, req *QueryAllCoinSymbolRequest) (*QueryAllCoinSymbolResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CoinSymbolAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -211,6 +444,42 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_CoinSymbol_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetCoinSymbolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).CoinSymbol(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/colosseuma.colosseuma.Query/CoinSymbol",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).CoinSymbol(ctx, req.(*QueryGetCoinSymbolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_CoinSymbolAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllCoinSymbolRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).CoinSymbolAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/colosseuma.colosseuma.Query/CoinSymbolAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).CoinSymbolAll(ctx, req.(*QueryAllCoinSymbolRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "colosseuma.colosseuma.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -218,6 +487,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "CoinSymbol",
+			Handler:    _Query_CoinSymbol_Handler,
+		},
+		{
+			MethodName: "CoinSymbolAll",
+			Handler:    _Query_CoinSymbolAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -280,6 +557,151 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetCoinSymbolRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetCoinSymbolRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetCoinSymbolRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Id != 0 {
+		i = encodeVarintQuery(dAtA, i, uint64(m.Id))
+		i--
+		dAtA[i] = 0x8
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetCoinSymbolResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetCoinSymbolResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetCoinSymbolResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.CoinSymbol.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllCoinSymbolRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllCoinSymbolRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllCoinSymbolRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllCoinSymbolResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllCoinSymbolResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllCoinSymbolResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.CoinSymbol) > 0 {
+		for iNdEx := len(m.CoinSymbol) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.CoinSymbol[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -308,6 +730,61 @@ func (m *QueryParamsResponse) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetCoinSymbolRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Id != 0 {
+		n += 1 + sovQuery(uint64(m.Id))
+	}
+	return n
+}
+
+func (m *QueryGetCoinSymbolResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.CoinSymbol.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllCoinSymbolRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllCoinSymbolResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.CoinSymbol) > 0 {
+		for _, e := range m.CoinSymbol {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
@@ -426,6 +903,364 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if err := m.Params.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetCoinSymbolRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetCoinSymbolRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetCoinSymbolRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
+			}
+			m.Id = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Id |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetCoinSymbolResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetCoinSymbolResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetCoinSymbolResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CoinSymbol", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.CoinSymbol.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllCoinSymbolRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllCoinSymbolRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllCoinSymbolRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllCoinSymbolResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllCoinSymbolResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllCoinSymbolResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field CoinSymbol", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.CoinSymbol = append(m.CoinSymbol, CoinSymbol{})
+			if err := m.CoinSymbol[len(m.CoinSymbol)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
