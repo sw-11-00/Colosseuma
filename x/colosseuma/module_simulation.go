@@ -28,6 +28,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgCreateCoinSymbol int = 100
 
+	opWeightMsgDeleteCoinSymbol = "op_weight_msg_delete_coin_symbol"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgDeleteCoinSymbol int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -71,6 +75,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgCreateCoinSymbol,
 		colosseumasimulation.SimulateMsgCreateCoinSymbol(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgDeleteCoinSymbol int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgDeleteCoinSymbol, &weightMsgDeleteCoinSymbol, nil,
+		func(_ *rand.Rand) {
+			weightMsgDeleteCoinSymbol = defaultWeightMsgDeleteCoinSymbol
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgDeleteCoinSymbol,
+		colosseumasimulation.SimulateMsgDeleteCoinSymbol(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation
