@@ -15,6 +15,8 @@ export interface ColosseumaCoinSymbol {
   symbol?: string;
 }
 
+export type ColosseumaMsgCreateCoinSymbolResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */
